@@ -1,0 +1,1283 @@
+/* ============================================
+   Reset & Base
+   ============================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  color: #2f3941;
+  background: #f8f9f9;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 8px;
+  background: #f8f9f9;
+  flex-shrink: 0;
+}
+
+/* Left group: logo + product tray */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 32px;
+}
+
+.header-product-tray {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.header-product-tray:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.header-product-label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #2f3941;
+  white-space: nowrap;
+}
+
+.chevron-icon {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Right group: fills remaining space */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  justify-content: flex-end;
+  padding-right: 4px;
+}
+
+/* Middle zone: env on left, search on right, space-between */
+.header-middle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  min-width: 0;
+  height: 32px;
+}
+
+.header-env {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.header-separator {
+  width: 1px;
+  height: 24px;
+  background: #d8dcde;
+  flex-shrink: 0;
+}
+
+.header-workspace-name {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: -0.0004px;
+  color: #2f3941;
+  padding: 6px 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Actions (search) inside middle zone */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Search bar */
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 320px;
+  padding: 6px 12px;
+  border: 1px solid #d8dcde;
+  border-radius: 8px;
+  background: white;
+}
+
+.search-icon {
+  flex-shrink: 0;
+  display: block;
+}
+
+.search-placeholder {
+  flex: 1;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #68737d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Header icon buttons */
+.header-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.header-icon-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.header-icon-btn--active {
+  background: #293239;
+}
+
+.header-icon-btn--active:hover {
+  background: #1f2930;
+}
+
+/* ============================================
+   App Body — everything below the header
+   ============================================ */
+.app-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ============================================
+   Nav Rail (left icon bar)
+   ============================================ */
+.nav-rail {
+  width: 56px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  background: #f8f9f9;
+  position: relative;
+}
+
+/* Subtle gradient at the bottom of the nav rail */
+.nav-rail::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 231px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(92, 105, 112, 0.08));
+  pointer-events: none;
+}
+
+.nav-rail-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-rail-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1; /* above gradient */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  /* Each nav-item sits inside a 48px tall slot */
+  margin: 8px 0;
+}
+
+.nav-rail-top .nav-item:first-child {
+  margin-top: 0;
+}
+
+.nav-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.nav-item--active {
+  background: #293239;
+}
+
+.nav-item--active:hover {
+  background: #1f2930;
+}
+
+/* Toggle button icon rotates when subnav collapses */
+#subnav-toggle img {
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#subnav-toggle[aria-expanded="false"] img {
+  transform: rotate(180deg);
+}
+
+/* ============================================
+   Subnav Panel
+   ============================================ */
+.subnav {
+  width: 240px;
+  flex-shrink: 0;
+  background: #f8f9f9;
+  padding: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* iOS-style spring curve: fast start, gentle settle */
+  transition:
+    width 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+    padding 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: width;
+}
+
+.subnav > * {
+  transition: opacity 0.15s ease;
+  opacity: 1;
+}
+
+.subnav--collapsed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.subnav--collapsed > * {
+  opacity: 0;
+}
+
+.subnav-heading {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.45px;
+  color: #2f3941;
+  padding: 12px 12px 12px 12px;
+}
+
+/* "Agent tools" section divider */
+.subnav-group-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 12px 12px 12px;
+}
+
+.subnav-group-label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #68737d;
+  white-space: nowrap;
+}
+
+.subnav-group-line {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #d8dcde;
+}
+
+/* Subnav menu items */
+.subnav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 12px;
+}
+
+.subnav-link {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 8px 0 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #2f3941;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subnav-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.subnav-link--active {
+  background: #293239;
+  color: white;
+}
+
+.subnav-link--active:hover {
+  background: #1f2930;
+}
+
+/* ============================================
+   Content Area (main + copilot)
+   ============================================ */
+.content-area {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+  padding-top: 4px;
+}
+
+/* Main panel: scrollable content + sticky footer */
+.main-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: white;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 0 4px rgba(10, 13, 14, 0.16);
+  overflow: hidden;
+}
+
+.main-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ============================================
+   Page Header (breadcrumbs + title)
+   ============================================ */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.breadcrumb-item {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #68737d;
+  white-space: nowrap;
+}
+
+.breadcrumb-chevron {
+  width: 12px;
+  height: 20px;
+  color: #68737d;
+  flex-shrink: 0;
+}
+
+.page-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 0.35px;
+  color: #2f3941;
+}
+
+/* ============================================
+   Page Content (form)
+   ============================================ */
+.page-content {
+  width: 100%;
+}
+
+.macro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  width: 400px;
+  max-width: 630px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #2f3941;
+}
+
+/* Text input */
+.form-input {
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid #d8dcde;
+  border-radius: 4px;
+  background: white;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #2f3941;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #1f73b7;
+  box-shadow: 0 0 0 3px rgba(31, 115, 183, 0.35);
+}
+
+/* Select / dropdown */
+.form-select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.form-select {
+  width: 100%;
+  height: 40px;
+  padding: 10px 36px 10px 12px;
+  border: 1px solid #d8dcde;
+  border-radius: 4px;
+  background: white;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #2f3941;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  border-color: #1f73b7;
+  box-shadow: 0 0 0 3px rgba(31, 115, 183, 0.35);
+}
+
+.form-select-chevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #68737d;
+  pointer-events: none;
+}
+
+/* Separator between form sections */
+.form-separator {
+  width: 100%;
+  height: 1px;
+  background: #e8eaec;
+  margin: 4px 0;
+}
+
+/* Actions header */
+.actions-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.actions-title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.45px;
+  color: #2f3941;
+}
+
+.actions-hint {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #68737d;
+}
+
+/* Textarea */
+.form-textarea {
+  width: 100%;
+  min-height: 208px;
+  padding: 10px 12px;
+  border: 1px solid #d8dcde;
+  border-radius: 4px;
+  background: white;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #2f3941;
+  resize: vertical;
+  outline: none;
+}
+
+.form-textarea:focus {
+  border-color: #1f73b7;
+  box-shadow: 0 0 0 3px rgba(31, 115, 183, 0.35);
+}
+
+/* ============================================
+   Action Footer
+   ============================================ */
+.action-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  height: 80px;
+  padding: 0 40px;
+  border-top: 1px solid #e9ebed;
+  background: white;
+  flex-shrink: 0;
+}
+
+.btn-cancel {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #1f73b7;
+  padding: 10px 16px;
+  border-radius: 4px;
+  background: none;
+}
+
+.btn-cancel:hover {
+  background: rgba(31, 115, 183, 0.08);
+}
+
+.btn-save {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: white;
+  background: #1f73b7;
+  padding: 10px 16px;
+  border-radius: 4px;
+  height: 40px;
+}
+
+.btn-save:hover {
+  background: #175ea1;
+}
+
+/* ============================================
+   Copilot Panel
+   ============================================ */
+.copilot-panel {
+  width: 380px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 12px 12px;
+  overflow: visible;
+  transition:
+    width 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+    padding 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: width;
+}
+
+.copilot-panel > * {
+  transition: opacity 0.15s ease;
+  opacity: 1;
+}
+
+.copilot-panel--collapsed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.copilot-panel--collapsed > * {
+  opacity: 0;
+}
+
+/* Expanded state — canvas + conversation side by side */
+.copilot-panel--expanded {
+  width: 972px; /* 602 canvas + 356 conversation + 14 padding */
+}
+
+/* The copilot card container */
+.copilot-card {
+  width: 356px;
+  height: 100%;
+  background: white;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 0 4px rgba(10, 13, 14, 0.16);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* When expanded, card becomes horizontal and fills width */
+.copilot-panel--expanded .copilot-card {
+  width: 958px;
+  flex-direction: row;
+  border-radius: 12px 12px 0 0;
+}
+
+/* --- Canvas section (left side when expanded) --- */
+.copilot-canvas-section {
+  width: 602px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 10px 10px;
+  animation: canvas-fade-in 0.25s ease-out;
+}
+
+@keyframes canvas-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Conversation section (right side, or full card when collapsed) --- */
+.copilot-conversation-section {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* --- Copilot Header --- */
+.copilot-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px 8px 12px 20px;
+  flex-shrink: 0;
+}
+
+.copilot-header-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.copilot-header-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #293239;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
+}
+
+.copilot-header-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.copilot-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  color: #68737d;
+}
+
+.copilot-icon-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.copilot-icon-btn--round {
+  border-radius: 24px;
+}
+
+/* --- Copilot Body (conversation area) --- */
+.copilot-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+  position: relative;
+}
+
+.copilot-content {
+  flex: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+/* User message — right-aligned teal bubble */
+.copilot-msg-user {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 12px 20px 12px 40px;
+}
+
+.copilot-bubble {
+  background: #ecf9f9;
+  padding: 8px 12px;
+  border-radius: 12px 12px 0 12px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #293239;
+  max-width: 296px;
+}
+
+/* AI response — left-aligned with sparkle */
+.copilot-msg-ai {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 12px 20px;
+}
+
+.copilot-sparkle {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.copilot-ai-text {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #293239;
+}
+
+/* Article preview card */
+.copilot-preview-wrap {
+  padding: 0 20px 8px;
+}
+
+.copilot-preview-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  width: 316px;
+  border: 1px solid #e8eaec;
+  border-radius: 12px;
+  background: white;
+}
+
+.copilot-preview-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #f2e7f6;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.copilot-preview-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.copilot-preview-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #293239;
+}
+
+.copilot-preview-subtitle {
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.0004px;
+  color: #5c6970;
+}
+
+/* Bottom fade gradient over content */
+.copilot-body-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+  pointer-events: none;
+}
+
+/* --- Copilot Input Area ---
+   Uses CSS Grid to layer three elements in the same cell:
+   1. Purple background shape
+   2. Scope tag (text + X)
+   3. Input pill
+   Each is offset with margin to match the Figma spec. */
+.copilot-input-area {
+  flex-shrink: 0;
+  display: inline-grid;
+  grid-template-columns: max-content;
+  grid-template-rows: max-content;
+  align-items: start;
+  line-height: 0;
+}
+
+/* Layer 1: Purple background — offset right, flush top */
+.copilot-input-bg {
+  grid-column: 1;
+  grid-row: 1;
+  width: 301px;
+  height: 45px;
+  background: #f2e7f6;
+  border-radius: 8px;
+  margin-left: 27px;
+  margin-top: 0;
+}
+
+/* Layer 2: Scope tag — offset right + down from top
+   Figma: text at ml-38 mt-4, X icon at ml-270 mt-3 (both from grid origin).
+   Row starts at 38px, X icon right edge at 270+12=282px → row width = 244px. */
+.copilot-scope-row {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  margin-left: 38px;
+  margin-top: 4px;
+  width: 282px;
+}
+
+.copilot-scope-label {
+  font-size: 10px;
+  line-height: 16px;
+  letter-spacing: -0.0004px;
+  color: #2e1150;
+  white-space: nowrap;
+}
+
+.copilot-scope-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  margin-left: auto;
+  padding: 0;
+  color: #2e1150;
+}
+
+/* Layer 3: Input pill — flush left with padding, offset down */
+.copilot-input-wrap {
+  grid-column: 1;
+  grid-row: 1;
+  margin-top: 23px;
+  padding: 0 16px 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+/* Styled as a Garden FauxInput with all interaction states.
+   See: https://garden.zendesk.com/components/input#faux-input */
+.copilot-input-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 324px;
+  border: 1px solid #b0b8be;
+  border-radius: 20px;
+  background: white;
+  padding: 10px 12px;
+  transition: border-color 0.25s ease-in-out, box-shadow 0.1s ease-in-out;
+  cursor: text;
+}
+
+/* Hover: blue border */
+.copilot-input-pill:hover {
+  border-color: #5293c7;
+}
+
+/* Focus-within: Garden focus ring (triggered when the inner input is focused) */
+.copilot-input-pill:focus-within {
+  border-color: #1f73b7;
+  box-shadow: 0 0 0 3px rgba(31, 115, 183, 0.35);
+}
+
+/* Disabled state */
+.copilot-input-pill.is-disabled {
+  background: rgba(92, 105, 112, 0.08);
+  border-color: transparent;
+  color: #848f99;
+  cursor: default;
+}
+
+.copilot-input-pill.is-disabled .copilot-input {
+  color: #848f99;
+  cursor: default;
+}
+
+.copilot-input-pill.is-disabled .copilot-send-btn {
+  background: #c2c8cc;
+  cursor: default;
+  pointer-events: none;
+}
+
+.copilot-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  color: #293239;
+  background: transparent;
+  min-width: 0;
+  min-height: 24px;
+  max-height: 80px;
+  padding: 0;
+}
+
+.copilot-input::placeholder {
+  color: #848f99;
+}
+
+.copilot-send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 24px;
+  background: #293239;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Resource card — clickable + active state
+   ============================================ */
+.copilot-preview-card {
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.copilot-preview-card:hover {
+  border-color: #5293c7;
+}
+
+.copilot-preview-card--active,
+.copilot-preview-card--active:hover {
+  border-color: #ff5d5a;
+  box-shadow: none;
+}
+
+/* ============================================
+   Canvas (inside expanded copilot panel)
+   ============================================ */
+.canvas-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e8eaec;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* --- Toolbar (sticky top) --- */
+.canvas-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: none;
+  box-shadow: 0 1px 0 0 #e8eaec;
+  background: white;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.canvas-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.canvas-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Toolbar icon buttons (text or SVG inside) */
+.canvas-toolbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  color: #49545c;
+  transition: background 0.15s ease;
+}
+
+.canvas-toolbar-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #2f3941;
+}
+
+/* Text labels inside toolbar buttons */
+.canvas-toolbar-btn-text {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  color: inherit;
+}
+
+.canvas-toolbar-btn-text--sm {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+/* Text color button: "A" with colored underline */
+.canvas-toolbar-color-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.canvas-toolbar-color-bar {
+  display: block;
+  width: 12px;
+  height: 2.5px;
+  background: #d93f4c;
+  border-radius: 1px;
+}
+
+/* Vertical divider between formatting and utility buttons */
+.canvas-toolbar-divider {
+  width: 1px;
+  height: 20px;
+  background: #d8dcde;
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+
+/* --- Canvas body (scrollable content area below toolbar) --- */
+.canvas-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 40px;
+}
+
+/* --- Article content typography --- */
+.canvas-article {
+  max-width: 720px;
+  animation: content-fade-in 0.2s ease-out;
+}
+
+@keyframes content-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.canvas-article-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #2f3941;
+  margin: 0 0 16px;
+}
+
+.canvas-article-body p {
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.15px;
+  color: #2f3941;
+  margin: 0 0 16px;
+}
+
+.canvas-article-body h2 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #2f3941;
+  margin: 24px 0 8px;
+}
+
+.canvas-article-body ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0 0 16px;
+}
+
+.canvas-article-body li {
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.15px;
+  color: #2f3941;
+  margin-bottom: 4px;
+}
+
+.canvas-article-body li::marker {
+  color: #87929d;
+  font-size: 12px;
+}
+
+/* --- Loading skeleton --- */
+.canvas-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 720px;
+}
+
+.canvas-skeleton-bar {
+  height: 14px;
+  background: #e9ebed;
+  border-radius: 4px;
+  animation: skeleton-pulse 1.2s ease-in-out infinite;
+}
+
+.canvas-skeleton-bar--title {
+  width: 260px;
+  height: 22px;
+  margin-bottom: 8px;
+}
+
+.canvas-skeleton-bar--heading {
+  width: 200px;
+  height: 16px;
+  margin-top: 12px;
+}
+
+.canvas-skeleton-bar--full {
+  width: 100%;
+}
+
+.canvas-skeleton-bar--mid {
+  width: 65%;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Publish button — outlined/bordered style per Figma spec */
+.canvas-publish-btn {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  padding: 4px 12px;
+  border: 1px solid #d8dcde;
+  border-radius: 8px;
+  background: white;
+  color: #2f3941;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.canvas-publish-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: #c2c8cc;
+}
