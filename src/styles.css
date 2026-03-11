@@ -196,6 +196,11 @@ ul {
   background: #293239;
 }
 
+/* Make copilot sparkle icon white when button is active */
+.header-icon-btn--active .copilot-toggle-icon {
+  filter: brightness(0) invert(1);
+}
+
 .header-icon-btn--active:hover {
   background: #1f2930;
 }
@@ -1065,8 +1070,9 @@ ul {
 
 .copilot-preview-card--active,
 .copilot-preview-card--active:hover {
-  border-color: #ff5d5a;
-  box-shadow: none;
+  background: #faf8fe;
+  border-color: #a33fe1;
+  box-shadow: 0 0 0 2px rgba(242, 231, 246, 0.5);
 }
 
 /* ============================================

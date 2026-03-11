@@ -6,12 +6,19 @@ interface CanvasState {
   activeResource: ResourceReference | null
   openCanvas: (resource: ResourceReference) => void
   closeCanvas: () => void
+  copilotVisible: boolean
+  toggleCopilot: () => void
 }
 
 const CanvasContext = createContext<CanvasState | null>(null)
 
 export function CanvasProvider({ children }: { children: ReactNode }) {
   const [activeResource, setActiveResource] = useState<ResourceReference | null>(null)
+  const [copilotVisible, setCopilotVisible] = useState(true)
+
+  const toggleCopilot = useCallback(() => {
+    setCopilotVisible((prev) => !prev)
+  }, [])
 
   const openCanvas = useCallback((resource: ResourceReference) => {
     setActiveResource((prev) => {
@@ -30,6 +37,8 @@ export function CanvasProvider({ children }: { children: ReactNode }) {
       activeResource,
       openCanvas,
       closeCanvas,
+      copilotVisible,
+      toggleCopilot,
     }}>
       {children}
     </CanvasContext.Provider>

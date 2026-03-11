@@ -2,13 +2,17 @@ import { useCanvas } from '../../context/CanvasContext.tsx'
 import { Canvas } from '../canvas/Canvas.tsx'
 
 export function CopilotPanel() {
-  const { isOpen, openCanvas } = useCanvas()
+  const { isOpen, openCanvas, copilotVisible, toggleCopilot } = useCanvas()
 
   function handleResourceClick() {
     openCanvas({ id: '1', title: 'New Agent Onboarding', type: 'article' })
   }
 
-  const panelClass = `copilot-panel${isOpen ? ' copilot-panel--expanded' : ''}`
+  const panelClass = [
+    'copilot-panel',
+    isOpen ? 'copilot-panel--expanded' : '',
+    !copilotVisible ? 'copilot-panel--collapsed' : '',
+  ].filter(Boolean).join(' ')
 
   return (
     <aside className={panelClass} id="copilot-panel">
@@ -41,8 +45,10 @@ export function CopilotPanel() {
               <button className="copilot-icon-btn">
                 <img src="https://www.figma.com/api/mcp/asset/d654a8d8-4f21-4e0a-b029-4c74753ec8b1" alt="Notes" width="16" height="16" />
               </button>
-              <button className="copilot-icon-btn" id="copilot-close">
-                <img src="https://www.figma.com/api/mcp/asset/9955dc56-ff01-4826-a9d0-d44cd4ad5d3c" alt="Close" width="16" height="16" />
+              <button className="copilot-icon-btn" id="copilot-close" onClick={toggleCopilot} aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable={false} viewBox="0 0 16 16">
+                  <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M3 13L13 3m0 10L3 3"/>
+                </svg>
               </button>
             </div>
           </div>

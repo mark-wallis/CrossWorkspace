@@ -1,11 +1,8 @@
 import { useCanvas } from '../../context/CanvasContext.tsx'
+import sparkleIcon from '../../../i/purple-gradient-sparkle-icon.svg'
 
 export function Header() {
-  const { isOpen, openCanvas, closeCanvas } = useCanvas()
-
-  function handleCopilotToggle() {
-    // Copilot toggle is separate from canvas — kept as placeholder
-  }
+  const { copilotVisible, toggleCopilot } = useCanvas()
 
   return (
     <header className="header">
@@ -34,8 +31,8 @@ export function Header() {
             </div>
           </div>
         </div>
-        <button className="header-icon-btn header-icon-btn--active" id="copilot-toggle" onClick={handleCopilotToggle}>
-          <img src="https://www.figma.com/api/mcp/asset/fc742cad-6e70-4ae0-8ad5-ab68588ba56f" alt="Copilot" width="16" height="16" />
+        <button className={`header-icon-btn${copilotVisible ? ' header-icon-btn--active' : ''}`} id="copilot-toggle" onClick={toggleCopilot} aria-label="Copilot">
+          <img src={sparkleIcon} alt="" width="16" height="16" className="copilot-toggle-icon" />
         </button>
         <button className="header-icon-btn">
           <img src="https://www.figma.com/api/mcp/asset/ce1814a4-98ca-431f-be62-edeee2c9f6cc" alt="Help" width="20" height="20" />
