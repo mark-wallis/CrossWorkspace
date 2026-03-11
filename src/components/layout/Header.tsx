@@ -1,5 +1,5 @@
 import { useCanvas } from '../../context/CanvasContext.tsx'
-import sparkleIcon from '../../../i/purple-gradient-sparkle-icon.svg'
+import sparkleIcon from '../../assets/purple-gradient-sparkle-icon.svg'
 
 export function Header() {
   const { copilotVisible, toggleCopilot } = useCanvas()
